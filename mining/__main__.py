@@ -1,5 +1,7 @@
+from xls import Xls
+
 class Initialization:
     def __init__(self):
-        print("x is 1.")
+        Xls()
 
 Initialization()
