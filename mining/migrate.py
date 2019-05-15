@@ -10,7 +10,7 @@ class Migrate:
         sheet = data.sheet_by_index(0)
 
         for item in self.normalizer(sheet):
-            Database.insert('projetos', item)
+            Database().insert('projetos', item)
 
     def normalizer(self, sheet):
         for i in range(sheet.nrows):
