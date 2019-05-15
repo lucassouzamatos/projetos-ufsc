@@ -4,9 +4,9 @@ import xlrd
 from pymongo import MongoClient
 from __env__ import Env
 
-class Xls:
-    def __init__(self):
-        data = xlrd.open_workbook('./docs/projetos_.xls')
+class Migrate:
+    def __init__(self, doc):
+        data = xlrd.open_workbook(doc)
         sheet = data.sheet_by_index(0)
 
         client = MongoClient(Env('MONGODB_URL').value)

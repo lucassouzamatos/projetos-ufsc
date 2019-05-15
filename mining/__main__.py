@@ -1,7 +1,7 @@
-from xls import Xls
+from migrate import Migrate
 
-class Initialization:
-    def __init__(self):
-        Xls()
+def main():
+    Migrate('./docs/projetos_.xls')
 
-Initialization()
+if __name__ == '__main__':
+    main()
