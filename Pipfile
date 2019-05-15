@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 pandas = "*"
 xlrd = "*"
+pymongo = "*"
+python-dotenv = "*"
+environs = "*"
 
 [requires]
 python_version = "3.7"
