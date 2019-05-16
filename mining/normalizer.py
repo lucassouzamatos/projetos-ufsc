@@ -1,5 +1,5 @@
 class Normalizer:
-    def get(self, university, sheet, i):
+    def get(self, university: str, sheet: str, i: str):
         if university == 'ufsc':
             return {
                 "start":       self.value(sheet.row(i), 0),        
