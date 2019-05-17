@@ -17,11 +17,8 @@ class Normalizer:
 
     def value(self, row, i):
         value = row[i].value
-
-        # removendo texto antes do primeiro...
         value = value.split('...', 1)[-1]
 
-        # cortando string pela metade, caso haja repetição
         a,b = value[:int(len(value)/2)], value[int(len(value)/2):]
         if a == b:
             return a 
