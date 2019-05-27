@@ -16,6 +16,11 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.resource('projects', 'ProjectController')
-  .apiOnly()
+Route
+  .group(() => {
+    Route.get('projects/count', 'ProjectController.count')
+  })
+  .prefix('api/v1')
 
+Route.resource('api/v1/projects', 'ProjectController')
+  .apiOnly()
