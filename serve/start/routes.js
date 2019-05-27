@@ -19,6 +19,7 @@ const Route = use('Route')
 Route
   .group(() => {
     Route.get('projects/count', 'ProjectController.count')
+    Route.get('projects/funders', 'ProjectController.funders')
   })
   .prefix('api/v1')
 

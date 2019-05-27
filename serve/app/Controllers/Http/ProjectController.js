@@ -8,11 +8,7 @@ class ProjectController {
     return await query.paginate(1, 10);
   }
 
-  async _countAll(query) {
-    return await query.count()
-  }
-
-  async show({ request, params }) {
+  async show({ params }) {
     return Project.find(params.id);
   }
 
@@ -23,6 +19,15 @@ class ProjectController {
       count: await this._countAll(query)
     }
   }
+
+  async _countAll(query) {
+    return await query.count()
+  }
+
+  async funders() {
+    return await Project.query().sum('total')
+  }
+
 }
 
 module.exports = ProjectController
