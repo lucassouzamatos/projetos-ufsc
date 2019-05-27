@@ -13,5 +13,5 @@ class Migrate:
             Database().insert('projects', item)
 
     def normalizer(self, sheet: str):
-        for i in range(sheet.nrows):
+        for i in range(1, sheet.nrows):
             yield Normalizer().get('ufsc', sheet, i)

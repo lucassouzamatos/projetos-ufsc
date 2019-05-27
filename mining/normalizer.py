@@ -12,7 +12,7 @@ class Normalizer:
                 "department":   self.value(sheet.row(i), 7),
                 "participants": self.value(sheet.row(i), 8),
                 "funders":      self.value(sheet.row(i), 9),
-                "total":        self.value(sheet.row(i), 10)
+                "total":        self.convertToFloat(self.value(sheet.row(i), 10))
             }
 
     def value(self, row, i):
@@ -24,3 +24,10 @@ class Normalizer:
             return a 
 
         return value
+
+    def convertToFloat(self, value: str) -> float:
+        try:
+            toFloat = float(value.replace('.', '').replace(',', '.'))
+            return toFloat
+        except ValueError:
+            return value
