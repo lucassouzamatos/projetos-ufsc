@@ -27,7 +27,6 @@ class ProjectController {
   async funders() {
     return await Project.query().sum('total')
   }
-
 }
 
 module.exports = ProjectController

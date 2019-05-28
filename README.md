@@ -4,3 +4,5 @@
 ![Em desenvolvimento](https://img.shields.io/badge/initial%20version-in--progress-brightgreen.svg)
 
 O objetivo desse projeto é levar informação para a população, utilizando dados públicos de projetos da UFSC para que a informação esteja acessível a todos.
+
+Acesso a dados abertos UFSC: http://transparencia.proex.ufsc.br/

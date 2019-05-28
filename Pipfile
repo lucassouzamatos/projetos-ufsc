@@ -11,6 +11,7 @@ xlrd = "*"
 pymongo = "*"
 python-dotenv = "*"
 environs = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
