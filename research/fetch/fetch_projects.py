@@ -10,7 +10,7 @@ def run():
     sheet = data.sheet_by_index(0)
 
     for item in normalize(sheet):
-        Database().insert(item['department'], item)
+        Database().insert('projects', item)
 
 def normalize(sheet: str):
     for i in range(1, sheet.nrows):

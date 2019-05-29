@@ -1,4 +1,5 @@
 from fetch.fetch_projects import run as fetchProjects
+from fetch.fetch_departments import run as fetchDepartments
 # from fetch.fetch_funders import FetchFunders
 import argparse
 
@@ -9,6 +10,8 @@ def main():
     args = parser.parse_args()
     if args.fetch == 'fetch:projects':
         fetchProjects()
+    if args.fetch == 'fetch:departments':
+        fetchDepartments()
 
 if __name__ == '__main__': 
     main()
