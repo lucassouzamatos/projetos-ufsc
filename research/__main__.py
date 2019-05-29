@@ -1,4 +1,5 @@
 from migrate import Migrate
+from fetch.fetch_projects import FetchProjects
 
 def main():
     Migrate('./docs/projetos_.xls')
