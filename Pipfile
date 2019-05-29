@@ -12,6 +12,7 @@ pymongo = "*"
 python-dotenv = "*"
 environs = "*"
 requests = "*"
+argparse = "*"
 
 [requires]
 python_version = "3.7"
