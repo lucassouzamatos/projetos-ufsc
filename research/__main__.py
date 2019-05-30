@@ -3,6 +3,13 @@ from fetch.fetch_departments import run as fetchDepartments
 from fetch.fetch_funders import run as fetchFunders
 import argparse
 
+"""
+    Commands by cli:
+    
+    fetch:projects
+    fetch:funders
+    fetch:departments
+"""
 def main():
     parser = argparse.ArgumentParser(description='Options Research')
     parser.add_argument('fetch', type=str, help='[fetch:projects, fetch:funders, fetch:departments]')
