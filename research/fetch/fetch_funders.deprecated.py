@@ -18,7 +18,7 @@ def run():
 def normalize(sheet: str):
     for i in range(1, sheet.nrows):
         name = value(sheet.row(i), 9);
-        if (name == True):
+        if not name:
             continue
 
         yield {

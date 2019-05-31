@@ -24,9 +24,17 @@ def normalize(sheet: str):
             "contact":      value(sheet.row(i), 6),
             "department":   value(sheet.row(i), 7),
             "participants": value(sheet.row(i), 8),
-            "funders":      value(sheet.row(i), 9),
+            "funders":      funder(sheet.row(i)),
             "total":        convertToFloat(value(sheet.row(i), 10))
         }
+
+def funder(row):
+    value = row[9].value
+    value = value.split('-', 1)[0].replace('[', '')
+    selected = Database().select("funders", { "name": value })
+    if not selected:
+        Database().insert("funders", { "name": value })
+        self.funder(row)
 
 def value(row, i):
     value = row[i].value

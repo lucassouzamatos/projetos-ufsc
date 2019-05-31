@@ -19,8 +19,8 @@ def main():
         fetchProjects()
     if args.fetch == 'fetch:departments':
         fetchDepartments()
-    if args.fetch == 'fetch:funders':
-        fetchFunders()
+    # if args.fetch == 'fetch:funders':
+    #     fetchFunders()
 
 if __name__ == '__main__': 
     main()

@@ -6,4 +6,8 @@ class Database:
         self.client = MongoClient(Env('MONGODB_URL').value)
 
     def insert(self, collection, item: {}):
-        print('Inserted one => ', self.client.ufsc[collection].insert_one(item).inserted_id)
+        print("[" + collection + "] Inserted one => ", self.client.ufsc[collection].insert_one(item).inserted_id)
+
+    def select(self, collection, item: {}):
+        value = self.client.ufsc[collection].find_one(item)
+        return value
