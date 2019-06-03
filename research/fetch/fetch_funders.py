@@ -10,7 +10,7 @@ def run():
     sheet = data.sheet_by_index(0)
 
     for item in normalize(sheet):
-        Database().insert('funders', item)
+        Database().insert("funders", item, unique=True)
 
 """
     Return { "name": "Lorem" }
@@ -18,7 +18,7 @@ def run():
 def normalize(sheet: str):
     for i in range(1, sheet.nrows):
         name = value(sheet.row(i), 9);
-        if not name:
+        if not name.replace(" ", ""):
             continue
 
         yield {
