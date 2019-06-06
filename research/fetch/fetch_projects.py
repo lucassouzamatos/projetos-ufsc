@@ -3,7 +3,7 @@ import xlrd
 
 from utils.database import Database
 
-PROJECTS_DOC = './research/docs/data.xls'
+PROJECTS_DOC = './docs/data.xls'
 
 def run():
     data = xlrd.open_workbook(PROJECTS_DOC)
@@ -24,7 +24,7 @@ def normalize(sheet: str):
             "contact":      value(sheet.row(i), 6),
             "department":   value(sheet.row(i), 7),
             "participants": value(sheet.row(i), 8),
-            "funders":      funder(sheet.row(i)),
+            "funder_id":    funder(sheet.row(i)),
             "total":        convertToFloat(value(sheet.row(i), 10))
         }
 
@@ -34,7 +34,8 @@ def funder(row):
     selected = Database().select("funders", { "name": value })
     if not selected:
         Database().insert("funders", { "name": value })
-        self.funder(row)
+        funder(row)
+    return selected['_id']
 
 def value(row, i):
     value = row[i].value

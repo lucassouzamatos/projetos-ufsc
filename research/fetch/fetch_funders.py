@@ -3,7 +3,7 @@ import xlrd
 
 from utils.database import Database
 
-PROJECTS_DOC = './research/docs/data.xls'
+PROJECTS_DOC = './docs/data.xls'
 
 def run():
     data = xlrd.open_workbook(PROJECTS_DOC)
