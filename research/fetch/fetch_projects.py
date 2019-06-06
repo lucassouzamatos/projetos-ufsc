@@ -15,18 +15,26 @@ def run():
 def normalize(sheet: str):
     for i in range(1, sheet.nrows):
         yield {
-            "start":        value(sheet.row(i), 0),        
-            "finish":       value(sheet.row(i), 1),        
-            "status":       value(sheet.row(i), 2),        
-            "title":        value(sheet.row(i), 3),       
-            "describe":     value(sheet.row(i), 4),       
-            "coordinator":  value(sheet.row(i), 5),        
-            "contact":      value(sheet.row(i), 6),
-            "department":   value(sheet.row(i), 7),
-            "participants": value(sheet.row(i), 8),
-            "funder_id":    funder(sheet.row(i)),
-            "total":        convertToFloat(value(sheet.row(i), 10))
+            "start":         value(sheet.row(i), 0),
+            "finish":        value(sheet.row(i), 1),
+            "status":        value(sheet.row(i), 2),
+            "title":         value(sheet.row(i), 3),
+            "describe":      value(sheet.row(i), 4),
+            "coordinator":   value(sheet.row(i), 5),
+            "contact":       value(sheet.row(i), 6),
+            "department_id": department(sheet.row(i)),
+            "participants":  value(sheet.row(i), 8),
+            "funder_id":     funder(sheet.row(i)),
+            "total":         convertToFloat(value(sheet.row(i), 10))
         }
+
+def department(row):
+    value = row[7].value
+    selected = Database().select("departments", { "name": value })
+    if not selected:
+        Database().insert("departments", { "name": value })
+        department(row)
+    return selected["_id"]
 
 def funder(row):
     value = row[9].value
@@ -35,7 +43,7 @@ def funder(row):
     if not selected:
         Database().insert("funders", { "name": value })
         funder(row)
-    return selected['_id']
+    return selected["_id"]
 
 def value(row, i):
     value = row[i].value
