@@ -20,6 +20,8 @@ Route
   .group(() => {
     Route.get('projects/count', 'ProjectController.count')
     Route.get('projects/funders', 'ProjectController.funders')
+
+    Route.get('funders', 'FunderController.index')
   })
   .prefix('api/v1')
 
