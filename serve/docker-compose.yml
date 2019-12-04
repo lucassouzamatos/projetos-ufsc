@@ -1,0 +1,38 @@
+version: '3'
+
+networks:
+  ufsc:
+    driver: bridge
+
+volumes:
+  postgres-container:
+
+services:
+  api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules
+    ports:
+      - "3333:3333"
+    networks:
+      - ufsc
+    container_name: api
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
